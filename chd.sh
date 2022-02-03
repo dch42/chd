@@ -13,6 +13,14 @@ function install_deps {
     esac
 }
 
+function cleanup {
+    declare local name="$1"
+    for ext in cue bin;
+    do
+        eval rm -v ${name}*.${ext}
+    done
+}
+
 # check dependencies
 
 for dep in brew 7z chdman;
@@ -24,7 +32,19 @@ do
     done
 done
 
+# unpack archive & create chd
+
+echo "Unpacking archive $archive..."
 eval 7z e $archive
-eval chdman createcd -v -i "${name}.cue" -o "${name}.chd"
+echo "Creating CHD file '${name}.chd'..."
+eval chdman createcd -v -i "${name}.cue" -o "${name}.chd" &&
+echo "[SUCCESS] ${name}.chd created!" ||
+echo "[ERROR] Something went wrong..."
+
+# rm unpacked bin/cue files
+
+echo "Cleaning up unpacked bin/cue files..."
+cleanup "$name"
+
 echo "Done!"
 exit 0

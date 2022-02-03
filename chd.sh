@@ -17,7 +17,7 @@ function install_deps {
 
 for dep in brew 7z chdman;
 do
-    while command -v $dep &> /dev/null
+    while ! command -v $dep &> /dev/null
     do
         echo "==> $dep not installed. ❌"
         install_deps "$dep"

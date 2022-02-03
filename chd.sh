@@ -9,7 +9,7 @@ function install_deps {
     case "${dep}" in 
         7z) eval brew install p7zip ;;
         chdman) eval brew install rom-tools ;;
-        brew) eval /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        brew) /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     esac
 }
 
@@ -17,7 +17,7 @@ function install_deps {
 
 for dep in brew 7z chdman;
 do
-    while ! command -v $dep &> /dev/null
+    while command -v $dep &> /dev/null
     do
         echo "==> $dep not installed. ❌"
         install_deps "$dep"

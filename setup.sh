@@ -2,7 +2,7 @@
 
 declare personal_bin="/Users/$USER/bin"
 declare cfg=".bash_profile"
-declare script="chd"
+declare script="chda"
 
 [ -n $ZSH_VERSION ] && 
 cfg=".zprofile"

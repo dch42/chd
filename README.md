@@ -10,7 +10,7 @@ Clone the repo and run setup.sh:
 git clone https://github.com/dch42/chda.git && cd chda && chmod +x ./setup.sh && ./setup.sh
 ~~~
 
-Running `setup.sh` will install the script as `chda` in /Users/$USER/bin and add $PATH.
+Running `setup.sh` will install the script as `chda` in /Users/$USER/bin and add to $PATH.
 
 ## Usage
 
